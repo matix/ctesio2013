@@ -6,6 +6,9 @@ var map,
     placesService,
     currentPosition; 
 
+var $searchForm,
+    $placesTypes;
+
 function initialize() {
   var map = new google.maps.Map(document.getElementById('map-canvas'),{
                     zoom: 6,
@@ -26,6 +29,16 @@ function initialize() {
   }
 
   placesService = new google.maps.places.PlacesService(map);
+
+  $searchForm = $(".search-form");
+  $placesTypes= $searchForm.find("select[name=type]");
+  $placesTypes.empty();
+  getPlacesTypes().forEach(function (item) {
+    $("<option>")
+        .attr("value", item.values)
+        .text(item.type)
+        .appendTo($placesTypes);
+  });
 }
 
 function cleanMap () {
