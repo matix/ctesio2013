@@ -1,0 +1,15 @@
+{
+  "name": "ctesio2013",
+  "version": "1.0.0",
+  "description": "ERROR: No README.md file found!",
+  "main": "index.html",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": "",
+  "author": "matix",
+  "license": "BSD",
+  "dependencies": {
+    "jquery": "~1.8.3"
+  }
+}

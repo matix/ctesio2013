@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+      html { height: 100% }
+      body { 
+        height: 100%; 
+        margin: 0; 
+        padding: 0;
+      }
+      #map-canvas { 
+        height: 100%;
+      }
+
+      .search-form {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        width: 300px;
+      }
+    </style>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSP2XZ7tUc8stI3METfAyM_ynUWdVzmUE&sensor=true&libraries=places"></script>
+    <script src="map.js"></script>
+  </head>
+  <body>
+    <div id="map-canvas"></div>
+    <div class="search-form">
+      <input name="query" type="text">
+    </div>
+  </body>
+</html>
