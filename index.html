@@ -2,9 +2,12 @@
 <html>
   <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <link href='http://fonts.googleapis.com/css?family=Merriweather+Sans:400,300' rel='stylesheet' type='text/css'>
+    <link href='vendor/bootstrap/css/bootstrap.css' rel='stylesheet' type='text/css'>
     <style type="text/css">
       html { height: 100% }
       body { 
+        font-family: 'Merriweather Sans', sans-serif;
         height: 100%; 
         margin: 0; 
         padding: 0;
@@ -17,17 +20,33 @@
         position: fixed;
         top: 10px;
         left: 10px;
-        width: 300px;
+
+        background-color: white;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 2px 10px 0;
+      }
+
+      .search-form input[name="query"]{
+        width: 30%;
       }
     </style>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSP2XZ7tUc8stI3METfAyM_ynUWdVzmUE&sensor=true&libraries=places"></script>
+    <script src="vendor/jquery-1.9.1.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.js"></script>
     <script src="map.js"></script>
   </head>
   <body>
     <div id="map-canvas"></div>
     <div class="search-form">
-      <input name="query" type="text">
+      <form class="form-search">
+        <input name="query" type="text" class="input-medium" placeholder="Find Places...">
+        <select name="type">
+          <option value="placeholder">Loading...</option>
+        </select>
+        <button type="submit" class="btn btn-primary">Search</button>
+      </form>
     </div>
   </body>
 </html>
