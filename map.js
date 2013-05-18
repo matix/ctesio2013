@@ -7,7 +7,8 @@ var map,
     currentPosition; 
 
 var $searchForm,
-    $placesTypes;
+    $placesTypes,
+    $query;
 
 function initialize() {
   var map = new google.maps.Map(document.getElementById('map-canvas'),{
@@ -39,6 +40,22 @@ function initialize() {
         .text(item.type)
         .appendTo($placesTypes);
   });
+
+  $query = $searchForm.find("input[name=query]");
+  $submit = $searchForm.find("button[type=submit]");
+
+  $submit.click(function (e) {
+    e.preventDefault();
+
+    var query = $query.val(),
+        types = $placesTypes.val();
+
+    cleanMap();
+    
+    if(query){
+      requestSearch(query, currentPosition, types);
+    }    
+  });
 }
 
 function cleanMap () {
@@ -61,6 +78,7 @@ function requestSearch (query, pos, type) {
 
   placesService.textSearch(request, function (results, status) {
    console.log(results);
+
    results.forEach(function (result) {
       var marker, info;
 
