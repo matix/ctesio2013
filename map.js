@@ -105,4 +105,3 @@ function getPlacesTypes() {
 google.maps.event.addDomListener(window, 'load', initialize);      
 
 })();
-    places[] = { type: "Util", values : ""}; 
