@@ -11,7 +11,7 @@ var $searchForm,
     $query;
 
 function initialize() {
-  var map = new google.maps.Map(document.getElementById('map-canvas'),{
+  map = new google.maps.Map(document.getElementById('map-canvas'),{
                     zoom: 6,
                     mapTypeId: google.maps.MapTypeId.ROADMAP
                   });
@@ -129,6 +129,7 @@ function handleNoGeolocation(errorFlag) {
 function getPlacesTypes() {
     var places = [];
 
+    places.push({ type: "Todo", values : "" });
     places.push({ type: "Salidas", values : "cafe|casino|food|night_club|museum|restaurant|shopping_mall" });
     places.push({ type: "Util", values : "airport|city_hall|embassy|parking|police"}); 
     places.push({ type: "Salud", values : "hospital|pharmacy|dentist|health"}); 
