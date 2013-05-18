@@ -35,12 +35,40 @@
       .search-form input[name="query"]{
         width: 30%;
       }
+
+      .place-info .rating {
+        position: absolute;
+        top: 16px;
+        right: 3px;
+        font-size: 40px;
+        color: #008000;
+      }
+
+      .place-info h2 {
+        font-size: 16px;
+        color: #808080;
+      }
+
     </style>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSP2XZ7tUc8stI3METfAyM_ynUWdVzmUE&sensor=true&libraries=places"></script>
     <script src="vendor/jquery-1.9.1.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.js"></script>
+    <script src="vendor/handlebars.js"></script>
     <script src="map.js"></script>
+
+    <script id="info-template" type="text/x-handlebars-template">
+    <div class="place-info">
+      <h1>{{name}}</h1>
+      <h2>{{formatted_address}}</h2>
+      {{#if rating}}
+      <span class="rating">{{rating}}</span>
+      {{/if}}
+      {{#each photos}}
+        <img src="{{thumb}}">
+      {{/each}}
+    </div>
+    </script>
   </head>
   <body>
     <div id="map-canvas"></div>

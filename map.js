@@ -10,6 +10,8 @@ var $searchForm,
     $placesTypes,
     $query;
 
+var infoTemplate;
+
 function initialize() {
   map = new google.maps.Map(document.getElementById('map-canvas'),{
                     zoom: 6,
@@ -30,6 +32,8 @@ function initialize() {
   }
 
   placesService = new google.maps.places.PlacesService(map);
+
+  infoTemplate = Handlebars.compile($("#info-template").html());
 
   $searchForm = $(".search-form");
   $placesTypes= $searchForm.find("select[name=type]");
@@ -82,6 +86,12 @@ function requestSearch (query, pos, type) {
    results.forEach(function (result) {
       var marker, info;
 
+      if(result.photos){
+        result.photos.forEach(function (photo) {
+          photo.thumb = photo.getUrl({'maxWidth': 800, 'maxHeight': 600});
+        });
+      }
+
       markers.push( marker = new google.maps.Marker({
           position: result.geometry.location,
           map: map
@@ -89,7 +99,7 @@ function requestSearch (query, pos, type) {
 
       infowindows.push(info = new google.maps.InfoWindow({
           map: map,
-          content: result.name
+          content: infoTemplate(result)
       }));
 
       google.maps.event.addListener(marker, "click", function () {
