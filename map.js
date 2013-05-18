@@ -37,12 +37,15 @@ function cleanMap () {
   infowindows = [];
 }
 
-function requestSearch (query, pos) {
+function requestSearch (query, pos, type) {
+  
   var request = {
-    location:pos,
+    location: pos,
     radius: '500',
-    query: query    
+    query: query,
+    types: type
   };
+
   placesService.textSearch(request, function (results, status) {
    console.log(results);
    results.forEach(function (result) {
