@@ -86,6 +86,23 @@ function handleNoGeolocation(errorFlag) {
   map.setCenter(options.position);
 }
 
+/**
+ * Returns an Array with types objects
+ *   { type, values }
+ * Each type is a group of real Google Maps Types.
+ *
+ */
+function getPlacesTypes() {
+    var places = [];
+
+    places.push({ type: "Salidas", values : "cafe|casino|food|night_club|museum|restaurant|shopping_mall" });
+    places.push({ type: "Util", values : "airport|city_hall|embassy|parking|police"}); 
+    places.push({ type: "Salud", values : "hospital|pharmacy|dentist|health"}); 
+
+    return places;
+}
+
 google.maps.event.addDomListener(window, 'load', initialize);      
 
 })();
+    places[] = { type: "Util", values : ""}; 
